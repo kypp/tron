@@ -8,11 +8,11 @@
 #include "logika.h"
 #include "grafika.h"
 
-const float PI = 3.14159265358979323846;	//liczba pi, potrzebna do obliczeñ skrêcania
-const float FPS				= 60;			//liczba po¿¹danych klatek na sekundê
-const float d_promien		= 4;			//domyœlna gruboœæ œladu zostawianego przez graczy
-const float d_velocity		= 2;			//domyœlna prêdkoœæ pojazdu graczy
-const float d_ang_velocity	= 2;			//domyœlna prêdkoœæ obrotu pojazdu	
+const float PI = 3.14159265358979323846;	//liczba pi, potrzebna do obliczeÅ„ skrÄ™cania
+const float FPS				= 60;			//liczba poÅ¼Ä…danych klatek na sekundÄ™
+const float d_promien		= 4;			//domyÅ›lna gruboÅ›Ä‡ Å›ladu zostawianego przez graczy
+const float d_velocity		= 2;			//domyÅ›lna prÄ™dkoÅ›Ä‡ pojazdu graczy
+const float d_ang_velocity	= 2;			//domyÅ›lna prÄ™dkoÅ›Ä‡ obrotu pojazdu	
 const int	d_wygrana		= 20;			//domyslna ilosc punktow potrzebnych do zwyciestwa
 const int   d_przerwy		= 2;			//domyslna wielkosc przerw w sladzie
 const int	d_odleglosc		= 10;			//domyslna odleglosc pomiedzy przerwami w sladzie
@@ -20,7 +20,7 @@ const int	d_odleglosc		= 10;			//domyslna odleglosc pomiedzy przerwami w sladzie
 int gra(ALLEGRO_DISPLAY *display, parametry *params)
 //zakladam, ze po wejsciu do funkcji gra moduly sa zaladowane: image_addon, primitives_addon, keyboard, mouse, no i samo allegro jest zainicjalizowane
 {	
-	//zmienne logiczne u¿ywane do obs³ugi zdarzeñ i g³ównej pêtli:
+	//zmienne logiczne uÅ¼ywane do obsÅ‚ugi zdarzeÅ„ i gÅ‚Ã³wnej pÄ™tli:
 	bool redraw = true;
 	bool doexit = false;	
 	bool pocz   = true;
@@ -29,37 +29,37 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 	bool still_alive[4] = { params->gracze[0], params->gracze[1], params->gracze[2], params->gracze[3] };
 	
 	
-	//zmienna oznaczaj¹ca stan gry:
+	//zmienna oznaczajÄ…ca stan gry:
 	int stan = 0;
 
 	//pobranie rozmiaru aktualnego ekranu:
 	int  maxx   = al_get_display_width(display);
 	int  maxy   = al_get_display_height(display);
 	
-	//deklaracja pocz¹tkowych ustawieñ i k¹tów graczy:
+	//deklaracja poczÄ…tkowych ustawieÅ„ i kÄ…tÃ³w graczy:
 	float x[4]		= { maxx/2-maxx/10, maxx/2-maxx/10, maxx/2+maxx/10, maxx/2+maxx/10 }; 
     float y[4]		= { maxy/2-maxy/10, maxy/2+maxy/10, maxy/2-maxy/10, maxy/2+maxy/10 };
 	float angle[4]	= { 225,			135,			315,			45			   };
 
-	//zmienne obs³uguj¹ce przerwy w œladzie:
+	//zmienne obsÅ‚ugujÄ…ce przerwy w Å›ladzie:
 	bool przer = false;
 	bool napraw = false;
 	int  n	   = 0;
 	float px[4], py[4], pomx[4], pomy[4];
 	unsigned char r=0, g=0, b=0;
 
-	//tworzenie kolejki zdarzeñ oraz timera zapewniaj¹cego odpowiedni¹ czêstotliwoœæ wyœwietlania, oraz bitmapy potrzebnej do wyœwietlania:
+	//tworzenie kolejki zdarzeÅ„ oraz timera zapewniajÄ…cego odpowiedniÄ… czÄ™stotliwoÅ›Ä‡ wyÅ›wietlania, oraz bitmapy potrzebnej do wyÅ›wietlania:
 	ALLEGRO_TIMER       *timer		 = al_create_timer(1.0 / FPS);
 	ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
 	ALLEGRO_BITMAP		*bufor		 = al_create_bitmap(maxx, maxy);	
 	
-	//podpiêcie do kolejki zdarzeñ zwi¹zanych z klawatur¹, mysz¹, timerem i displayem:
+	//podpiÄ™cie do kolejki zdarzeÅ„ zwiÄ…zanych z klawaturÄ…, myszÄ…, timerem i displayem:
 	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));	
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
 	al_register_event_source(event_queue, al_get_mouse_event_source());
 
-	//wstêpne wyczyszczenie ekranu i bufora - nie jest on czyszczony podczas rozgrywki:
+	//wstÄ™pne wyczyszczenie ekranu i bufora - nie jest on czyszczony podczas rozgrywki:
 	al_clear_to_color(al_map_rgb(0, 0, 0));	
     al_flip_display();	
 	al_clear_to_color(al_map_rgb(0, 0, 0));	
@@ -78,7 +78,7 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 		ALLEGRO_EVENT ev;
 		al_wait_for_event(event_queue, &ev);
 		
-		//instrukcja wykonywana FPS razy na sekundê, obs³uguj¹ca wykonane przez graczy naciœniêcia klawiszy:
+		//instrukcja wykonywana FPS razy na sekundÄ™, obsÅ‚ugujÄ…ca wykonane przez graczy naciÅ›niÄ™cia klawiszy:
 		if(ev.type == ALLEGRO_EVENT_TIMER) {
  
 			for (int i=0; i<4; i++)
@@ -89,12 +89,12 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 
 			redraw = true;
 		}
-		//obs³uga ¿¹dania wy³¹czenia programu:
+		//obsÅ‚uga Å¼Ä…dania wyÅ‚Ä…czenia programu:
 		else if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 			stan =-1;
 			break;
 		}
-		//sprawdzanie naciœniêæ klawiszy:
+		//sprawdzanie naciÅ›niÄ™Ä‡ klawiszy:
 		else if(ev.type == ALLEGRO_EVENT_KEY_DOWN) {
 			switch(ev.keyboard.keycode) {
  
@@ -133,7 +133,7 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 				break;
 			}
 		}
-		//sprawdzanie podniesieñ klawiszy:
+		//sprawdzanie podniesieÅ„ klawiszy:
 		else if(ev.type == ALLEGRO_EVENT_KEY_UP) {
 			switch(ev.keyboard.keycode) {
  
@@ -190,13 +190,13 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 		{
 			redraw = false;
 
-			//blokujê obecny stan buforu w celu szybkiego pobierania pikseli, bez blokowania al_get_pixel wykonuje siê bardzo wolno, z nim mam sta³e 240 FPS
+			//blokujÄ™ obecny stan buforu w celu szybkiego pobierania pikseli, bez blokowania al_get_pixel wykonuje siÄ™ bardzo wolno, z nim mam staÅ‚e 240 FPS
 			al_lock_bitmap(bufor, al_get_bitmap_format(bufor), ALLEGRO_LOCK_READONLY);
 
-			//ca³a logika gry - wykonywana jeœli nie oczekuje siê za zakoñczenie:
+			//caÅ‚a logika gry - wykonywana jeÅ›li nie oczekuje siÄ™ za zakoÅ„czenie:
 			if (!wait_for_input) {
 
-				//wykrywanie kolizji oraz ich obs³uga:				
+				//wykrywanie kolizji oraz ich obsÅ‚uga:				
 				for (int i=0; i<4; i++)
 				{
 					if (still_alive[i]) {
@@ -212,7 +212,7 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 					}
 				}
 				
-				//obs³uga przerw w œladzie:
+				//obsÅ‚uga przerw w Å›ladzie:
 				if (params->przerwy>0) {
 					n++;
 					if (przer && n>=(3*params->promien*(params->przerwy+1)/params->velocity))     {
@@ -223,7 +223,7 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 						n	  = 0;     			     }
 				}
 
-				//aktualizacja koordynatów graczy:				
+				//aktualizacja koordynatÃ³w graczy:				
 				napraw = false;
 				for (int i=0; i<4; i++)
 				{
@@ -257,7 +257,7 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 
 			al_unlock_bitmap(bufor);
 
-			//oczekiwanie chwilê w pocz¹tkowej pozycji
+			//oczekiwanie chwilÄ™ w poczÄ…tkowej pozycji
 			if (pocz) 
 				{
 					pocz = false;
@@ -266,7 +266,7 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 		}		
 	}	
 				
-	//usuwanie stworzonych obiektów:
+	//usuwanie stworzonych obiektÃ³w:
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);
 	al_destroy_bitmap(bufor);
@@ -275,21 +275,21 @@ int gra(ALLEGRO_DISPLAY *display, parametry *params)
 }
 
 int ustal_graczy(ALLEGRO_DISPLAY *display, parametry *params)
-//zak³adam, ¿e fonty, prymitywy, klawiatura, mysz i samo allegro s¹ zainicjalizowane
+//zakÅ‚adam, Å¼e fonty, prymitywy, klawiatura, mysz i samo allegro sÄ… zainicjalizowane
 {
-	//zmienne logiczne u¿ywane do obs³ugi zdarzeñ i g³ównej pêtli:
+	//zmienne logiczne uÅ¼ywane do obsÅ‚ugi zdarzeÅ„ i gÅ‚Ã³wnej pÄ™tli:
 	bool redraw = true;
 	bool doexit = false;	
 
 	//zmienna sterujaca stanem funkcji
 	int stan = 0;
 
-	//tworzenie kolejki zdarzeñ oraz timera zapewniaj¹cego odpowiedni¹ czêstotliwoœæ wyœwietlania:
+	//tworzenie kolejki zdarzeÅ„ oraz timera zapewniajÄ…cego odpowiedniÄ… czÄ™stotliwoÅ›Ä‡ wyÅ›wietlania:
 	ALLEGRO_TIMER       *timer		 = al_create_timer(1.0 / FPS);
 	ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
 	ALLEGRO_FONT		*font		 = al_load_ttf_font(FONT,72,0 );
 	
-	//podpiêcie do kolejki zdarzeñ zwi¹zanych z klawatur¹, mysz¹, timerem i displayem:
+	//podpiÄ™cie do kolejki zdarzeÅ„ zwiÄ…zanych z klawaturÄ…, myszÄ…, timerem i displayem:
 	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));	
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
@@ -304,11 +304,11 @@ int ustal_graczy(ALLEGRO_DISPLAY *display, parametry *params)
 		ALLEGRO_EVENT ev;
 		al_wait_for_event(event_queue, &ev);
 		
-		//obs³uga timera
+		//obsÅ‚uga timera
 		if(ev.type == ALLEGRO_EVENT_TIMER) 
 			redraw = true;
 
-		//obs³uga ¿¹dania wy³¹czenia programu:
+		//obsÅ‚uga Å¼Ä…dania wyÅ‚Ä…czenia programu:
 		else if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 			stan=-1;
 			doexit=true;
@@ -363,7 +363,7 @@ int ustal_graczy(ALLEGRO_DISPLAY *display, parametry *params)
 		}
 	}
 
-	//usuwanie stworzonych obiektów:
+	//usuwanie stworzonych obiektÃ³w:
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);
 
@@ -378,7 +378,7 @@ int wyniki(ALLEGRO_DISPLAY *display, parametry *params)
 	rysuj_wyniki(display, font, params);
 
 	al_rest(0.2);
-	//oczekiwanie na naciœniêcie klawisza ENTER albo SPACJI, lub ESC, sprawdzaj¹c klawiaturê co 1/FPS sekundy
+	//oczekiwanie na naciÅ›niÄ™cie klawisza ENTER albo SPACJI, lub ESC, sprawdzajÄ…c klawiaturÄ™ co 1/FPS sekundy
 	ALLEGRO_KEYBOARD_STATE stat;
 	do {
 		al_rest(1.0/FPS);
@@ -390,7 +390,7 @@ int wyniki(ALLEGRO_DISPLAY *display, parametry *params)
 
 int wstep(ALLEGRO_DISPLAY *display, parametry *params)
 {
-	//zmienne logiczne u¿ywane do obs³ugi zdarzeñ i g³ównej pêtli:
+	//zmienne logiczne uÅ¼ywane do obsÅ‚ugi zdarzeÅ„ i gÅ‚Ã³wnej pÄ™tli:
 	bool redraw = true;
 	bool doexit = false;	
 
@@ -398,7 +398,7 @@ int wstep(ALLEGRO_DISPLAY *display, parametry *params)
 	int stan	= 0;
 	int pozycja = 0;
 
-	//ustalenie parametrow na domyslne, jeœli jeszcze nie zosta³y ustawione:
+	//ustalenie parametrow na domyslne, jeÅ›li jeszcze nie zostaÅ‚y ustawione:
 	if (params->promien==-1)		params->promien			= d_promien;
 	if (params->velocity==-1)		params->velocity		= d_velocity;
 	if (params->ang_velocity==-1)	params->ang_velocity	= d_ang_velocity;
@@ -406,16 +406,16 @@ int wstep(ALLEGRO_DISPLAY *display, parametry *params)
 	if (params->przerwy==-1)		params->przerwy			= d_przerwy;
 	if (params->odleglosc==-1)		params->odleglosc		= d_odleglosc;
 	
-	//tworzenie kolejki zdarzeñ oraz timera zapewniaj¹cego odpowiedni¹ czêstotliwoœæ wyœwietlania:
+	//tworzenie kolejki zdarzeÅ„ oraz timera zapewniajÄ…cego odpowiedniÄ… czÄ™stotliwoÅ›Ä‡ wyÅ›wietlania:
 	ALLEGRO_TIMER       *timer		 = al_create_timer(1.0 / FPS);
 	ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
 	ALLEGRO_FONT		*font		 = al_load_ttf_font(FONT,32,0 );
 
-	//obs³uga t³a menu
+	//obsÅ‚uga tÅ‚a menu
 	ALLEGRO_BITMAP *background	= NULL;
 	background = al_load_bitmap("menu.png");
 
-	//podpiêcie do kolejki zdarzeñ zwi¹zanych z klawatur¹, timerem i displayem:
+	//podpiÄ™cie do kolejki zdarzeÅ„ zwiÄ…zanych z klawaturÄ…, timerem i displayem:
 	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));	
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
@@ -429,11 +429,11 @@ int wstep(ALLEGRO_DISPLAY *display, parametry *params)
 		ALLEGRO_EVENT ev;
 		al_wait_for_event(event_queue, &ev);
 		
-		//obs³uga timera
+		//obsÅ‚uga timera
 		if(ev.type == ALLEGRO_EVENT_TIMER) 
 			redraw = true;
 
-		//obs³uga ¿¹dania wy³¹czenia programu:
+		//obsÅ‚uga Å¼Ä…dania wyÅ‚Ä…czenia programu:
 		if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 			stan = -1;
 			doexit = true;
@@ -443,7 +443,7 @@ int wstep(ALLEGRO_DISPLAY *display, parametry *params)
 			bool pom=true;
 			switch(ev.keyboard.keycode) {
 			
-			//zmiana parametrów rozgrywki klawiszami LEWO i PRAWO
+			//zmiana parametrÃ³w rozgrywki klawiszami LEWO i PRAWO
 			case ALLEGRO_KEY_LEFT: 
 				pom=false;
 			case ALLEGRO_KEY_RIGHT:
@@ -505,7 +505,7 @@ int wstep(ALLEGRO_DISPLAY *display, parametry *params)
 		}
 	}
 
-	//usuwanie stworzonych obiektów:
+	//usuwanie stworzonych obiektÃ³w:
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);
 	al_destroy_bitmap(background);
@@ -517,7 +517,7 @@ ALLEGRO_DISPLAY *initialize(void)
 {		
 	ALLEGRO_DISPLAY *display = NULL;
 
-	//inicjalizacja wszystkich potrzebnych modu³ów
+	//inicjalizacja wszystkich potrzebnych moduÅ‚Ã³w
 	al_init();						
 	al_init_image_addon();			
 	al_init_primitives_addon();		
@@ -526,13 +526,13 @@ ALLEGRO_DISPLAY *initialize(void)
 	al_init_font_addon();			
 	al_init_ttf_addon();
 
-	//próba otwarcia pliku w trybie odczytu
+	//prÃ³ba otwarcia pliku w trybie odczytu
 	FILE *plik = NULL;
 	plik = fopen("tron.conf", "r");
 
 	if (plik==NULL)
 	{
-		//³adowanie domyœlnych ustawieñ i tworzenie pliku w wypadku niepowodzenia
+		//Å‚adowanie domyÅ›lnych ustawieÅ„ i tworzenie pliku w wypadku niepowodzenia
 		al_set_new_display_flags(WYSW_TRYB);
 		display = al_create_display(WYSW_X, WYSW_Y);
 		plik = fopen("tron.conf", "w");
@@ -541,7 +541,7 @@ ALLEGRO_DISPLAY *initialize(void)
 	}
 	else
 	{
-		//³adowanie ustawieñ z pliku
+		//Å‚adowanie ustawieÅ„ z pliku
 		int x, y;
 		char tryb[20];
 		fscanf(plik, "%d%d%s", &x, &y, tryb);

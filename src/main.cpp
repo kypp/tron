@@ -12,7 +12,7 @@ int main()
 	//maksymalne punkty gracza
 	int max;
 
-	//g³ówna pêtla obs³uguj¹ca ca³y program:
+	//gÅ‚Ã³wna pÄ™tla obsÅ‚ugujÄ…ca caÅ‚y program:
 	while (wstep(display, &params)==0)
 	{
 		for (int i=0; i<4; i++)

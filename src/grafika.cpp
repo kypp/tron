@@ -25,7 +25,7 @@ void rysuj_wybierz_graczy(ALLEGRO_DISPLAY *display, ALLEGRO_FONT *font, parametr
 	int  maxy   = al_get_display_height(display);
 
 	al_clear_to_color(al_map_rgb(0, 0, 0));
-	//rysowanie kwadratÛw jeúli gracz jest wybrany:
+	//rysowanie kwadrat√≥w je≈õli gracz jest wybrany:
 	for (int i=0; i<4; i++)
 		if (params->gracze[i])
 			al_draw_rectangle(	(i<2)		?(0+gr)		  :(maxx/2+gr), 
@@ -54,7 +54,7 @@ void rysuj_wyniki(ALLEGRO_DISPLAY *display, ALLEGRO_FONT *font, parametry *param
 	int  maxx   = al_get_display_width(display);
 	int  maxy   = al_get_display_height(display);
 
-	//wyúwietlenie wynikÛw graczy biorπcych udzia≥ w grze:
+	//wy≈õwietlenie wynik√≥w graczy biorƒÖcych udzia≈Ç w grze:
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 	char str[5];
 	for (int i=0; i<4;i++)
@@ -117,15 +117,15 @@ void rysuj_gre(ALLEGRO_DISPLAY *display, ALLEGRO_BITMAP *bufor, parametry *param
 	{
 		if (params->gracze[i] && still_alive[i]) {
 
-			//zarysowywanie úladu jeúli ma wystπpiÊ przerwa:
+			//zarysowywanie ≈õladu je≈õli ma wystƒÖpiƒá przerwa:
 			if (przer) 
 				al_draw_filled_circle(pomx[i], pomy[i], params->promien, al_map_rgb(0, 0, 0));
 
-			//zaokrπglenie krawÍdzi po przerwie:
+			//zaokrƒÖglenie krawƒôdzi po przerwie:
 			if (napraw)
 				al_draw_filled_circle(px[i], py[i], params->promien, al_map_rgb(kolor[i][0], kolor[i][1], kolor[i][2]));
 
-			//normalne rysowanie úladu:
+			//normalne rysowanie ≈õladu:
 			al_draw_filled_circle(x[i], y[i], params->promien, al_map_rgb(kolor[i][0], kolor[i][1], kolor[i][2]));					
 		}
 	}			

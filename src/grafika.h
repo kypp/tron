@@ -7,11 +7,11 @@ void rysuj_wyniki(ALLEGRO_DISPLAY *display, ALLEGRO_FONT *font, parametry *param
 void rysuj_wstep(ALLEGRO_DISPLAY *display, ALLEGRO_FONT *font, parametry *params, ALLEGRO_BITMAP *background, int pozycja);
 
 /*  rysuj_gre()
-	mnogoœæ zmiennych wynika z bliskiego zwi¹zania logiki gry z jej grafik¹, w szczególnoœci ze sprawdzania kolizji i wykonywania przerw w œladzie
-	przer - czy w³aœnie wykonywana jest przerwa
+	mnogoÅ›Ä‡ zmiennych wynika z bliskiego zwiÄ…zania logiki gry z jej grafikÄ…, w szczegÃ³lnoÅ›ci ze sprawdzania kolizji i wykonywania przerw w Å›ladzie
+	przer - czy wÅ‚aÅ›nie wykonywana jest przerwa
 	x, y - aktualne pozycje graczy
-	px, py - poprzednie pozycje graczy, s³u¿¹ce do zamazania przerwy
-	pomx, pomy - pozycje pocz¹tku przerwy u¿ywane do zaokr¹glania krawêdzi
-	napraw - czy wykonaæ zaokr¹glenie krawêdzi?
+	px, py - poprzednie pozycje graczy, sÅ‚uÅ¼Ä…ce do zamazania przerwy
+	pomx, pomy - pozycje poczÄ…tku przerwy uÅ¼ywane do zaokrÄ…glania krawÄ™dzi
+	napraw - czy wykonaÄ‡ zaokrÄ…glenie krawÄ™dzi?
 */
 void rysuj_gre(ALLEGRO_DISPLAY *display, ALLEGRO_BITMAP *bufor, parametry *params, bool *still_alive, bool przer, float *x, float *y, float *px, float *py, float *pomx, float *pomy, bool napraw);

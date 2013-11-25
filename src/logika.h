@@ -1,6 +1,6 @@
 #include <allegro5/allegro.h>
 
-//klawisze u¿ywane przez graczy (gracz 3 zawsze u¿ywa myszki) i ich opisowe nazwy:
+//klawisze uÅ¼ywane przez graczy (gracz 3 zawsze uÅ¼ywa myszki) i ich opisowe nazwy:
 #define G0_LEWO		ALLEGRO_KEY_LEFT
 #define G0_LEWO_T   "Lewo"
 #define G0_PRAWO	ALLEGRO_KEY_RIGHT
@@ -14,24 +14,24 @@
 #define G2_PRAWO	ALLEGRO_KEY_SLASH
 #define G2_PRAWO_T	"/"
 
-//font u¿ywany do wypisywania
+//font uÅ¼ywany do wypisywania
 #define FONT		"calibrib.ttf"
 
-//domyslne tryb wyœwietlania i rozdzielczoœæ:
+//domyslne tryb wyÅ›wietlania i rozdzielczoÅ›Ä‡:
 #define WYSW_TRYB		ALLEGRO_WINDOWED
 #define WYSW_X			1024
 #define WYSW_Y			768
 
 /*
 	Parametry:
-	promien		 - gruboœæ pojazdu graczy i jego œladu
-	velocity	 - prêdkoœæ pojazdu, wyra¿ona w pikselach na klatkê
-	ang_velocity - prêdkoœæ obrotu pojazdu, wyra¿ona w stopniach na klatkê
-	gracze		 - wskaŸnik na tablicê logiczn¹ graczy bior¹cych udzia³ w grze. G0-G2 u¿ywaj¹ klawiszy zdefiniowanych na górze, g3 u¿ywa myszki
-	punkty		 - wskaŸnik na tablicê punktów graczy, modyfikowan¹ w zale¿noœci od przebiegu gry
-	przerwy		 - czy maj¹ powstawaæ przerwy w œladzie?
+	promien		 - gruboÅ›Ä‡ pojazdu graczy i jego Å›ladu
+	velocity	 - prÄ™dkoÅ›Ä‡ pojazdu, wyraÅ¼ona w pikselach na klatkÄ™
+	ang_velocity - prÄ™dkoÅ›Ä‡ obrotu pojazdu, wyraÅ¼ona w stopniach na klatkÄ™
+	gracze		 - wskaÅºnik na tablicÄ™ logicznÄ… graczy biorÄ…cych udziaÅ‚ w grze. G0-G2 uÅ¼ywajÄ… klawiszy zdefiniowanych na gÃ³rze, g3 uÅ¼ywa myszki
+	punkty		 - wskaÅºnik na tablicÄ™ punktÃ³w graczy, modyfikowanÄ… w zaleÅ¼noÅ›ci od przebiegu gry
+	przerwy		 - czy majÄ… powstawaÄ‡ przerwy w Å›ladzie?
 	odleglosc	 - odleglosc pomiedzy kolejnymi przerwami w sladzie
-	wygrana		 - iloœæ punkjtów to wygranej
+	wygrana		 - iloÅ›Ä‡ punkjtÃ³w to wygranej
 */
 typedef struct parametry {
 	float promien;
@@ -46,34 +46,34 @@ typedef struct parametry {
 
 
 /*  gra()
-	G³ówna funkcja obs³uguj¹ca ca³¹ rozgrywkê, zwraca:
-	-1:  Zakoñczono grê przedwczeœnie (przez naciœniêcie ESC)
-	0:   Pomyœlne zakoñczenie gry
+	GÅ‚Ã³wna funkcja obsÅ‚ugujÄ…ca caÅ‚Ä… rozgrywkÄ™, zwraca:
+	-1:  ZakoÅ„czono grÄ™ przedwczeÅ›nie (przez naciÅ›niÄ™cie ESC)
+	0:   PomyÅ›lne zakoÅ„czenie gry
 */
 int gra(ALLEGRO_DISPLAY *display, parametry *params);
 
 /*  ustal_graczy()
-	Funkcja wyœwietlaj¹ca zdefinowane na górze klawisze przypisane graczom i ustalaj¹ca, którzy gracze maj¹ wzi¹œæ udzia³ w grzezwraca:
+	Funkcja wyÅ›wietlajÄ…ca zdefinowane na gÃ³rze klawisze przypisane graczom i ustalajÄ…ca, ktÃ³rzy gracze majÄ… wziÄ…Å›Ä‡ udziaÅ‚ w grzezwraca:
 	-1:  Nacisnieto ESC
 	0:   Nacisnieto ENTER lub SPACE 
 */
 int ustal_graczy(ALLEGRO_DISPLAY *display, parametry *params);
 
 /*  wyniki()
-	Funkcja wyœwietlaj¹ca aktualne wyniki, zwraca:
+	Funkcja wyÅ›wietlajÄ…ca aktualne wyniki, zwraca:
 	-1:  Nacisnieto ESC
 	0:   Nacisnieto ENTER lub SPACE 
 */
 int wyniki(ALLEGRO_DISPLAY *display, parametry *params);
 
 /*  wstep()
-	Funkcja wyœwietlaj¹ca i obslugujaca ekran poczatkowy, zwraca:
-	-1:  Wybrano opcjê zakoñczenia
+	Funkcja wyÅ›wietlajÄ…ca i obslugujaca ekran poczatkowy, zwraca:
+	-1:  Wybrano opcjÄ™ zakoÅ„czenia
 	0:   Wybrano opcje rozpoczecia gry
 */
 int wstep(ALLEGRO_DISPLAY *display, parametry *params);
 
 /*  initialize()
-	Funkcja inicjalizuje wszystkie potrzebne modu³y i zwraca wskaŸnik na utworzony display
+	Funkcja inicjalizuje wszystkie potrzebne moduÅ‚y i zwraca wskaÅºnik na utworzony display
 */
 ALLEGRO_DISPLAY *initialize(void); 
