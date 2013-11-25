@@ -1,0 +1,49 @@
+tron - gra dla od 2 do 4 graczy
+
+#1 Zasady gry:
+Ka¿dy gracz ma przypisany kolor i kontroluje pojazd zostawiaj¹cy œlad w tym kolorze. 
+Pojazd porusza siê bez przerwy do przodu, a gracz mo¿e skrêcaæ nim w lewo lub w prawo.
+W zale¿noœci od ustawieñ, w œladzie mog¹ pojawiaæ siê regularne przerwy.
+Jeœli pojazd gracza zderzy siê z œladem lub z krawêdzi¹ planszy, zatrzymuje siê on, a wszyscy gracze, których pojazd wci¹¿ siê porusza dostaj¹ po jednym punkcie.
+Gdy w grze pozostanie tylko jeden pojazd, runda koñczy siê i nastêpuje pokazanie punktacji.
+Proces ten powtarza siê, a¿ któryœ z graczy zdobêdzie ustalon¹ iloœæ punktów, co skutkuje jego wygran¹.
+
+#2 Opcje:
+Gry:
+W menu gry mo¿na zmodyfikowaæ wiele opcji. S¹ to:
+-gruboœæ linii - gruboœæ œladów zostawianych przez graczy
+-prêdkoœæ pojazdu
+-prêdkoœæ obrotu - prêdkoœæ obrotu pojazdów kontrolowanych przez graczy 
+-punkty do wygranej - iloœæ punktów, po której zdobyciu przez któregoœ gracza koñczy siê gra
+-wielkoœæ przerw w œladzie
+-odleg³oœæ miêdzy przerwami
+Wiêcej opcji, na przyk³ad kolory graczy, mo¿na zmodyfikowaæ w kodzie gry, w pliku grafika.h
+
+Graficzne:
+Przy pierwszym uruchomieniu gry utworzony zostaje plik tron.info zawieraj¹cy domyœlne ustawienia graficzne. 
+Plik ten mo¿na zmodyfikowaæ. Kolejne jego linijki to:
+-szerokoœciowa wspó³rzêdna rozdzielczoœci, np: 800, 1280, 1920
+-wysokoœciowa wspó³rzêdna rozdzielczoœci, np: 600, 720, 1080
+-FULLSCREEN lub WINDOWED, okreœlaj¹ce tryb wyœwietlania
+
+#4 Pliki:
+Pliki potrzebne do dzia³ania gry:
+-tron.exe - plik wykonywalny gry
+-calibrib.ttf - font u¿ywany do wyœwietlania tekstu, nazwa mo¿e byæ zmieniona w gra.h
+-allegro-5.0.5-monolith-md.dll - biblioteka graficzna Allegro 5
+-ewentualnie biblioteki c++ redistributable, jeœli kompilowano w VS2010
+
+Opcjonalnie:
+-menu.png - grafika wyœwietlana pod g³ównym menu
+-tron.conf - patrz 'Opcje graficzne'
+
+#5 Kod:
+Program podzielony jest na dwa modu³y, zawieraj¹ce wypisane poni¿ej funkcje:
+logika.h:  - plik zawieraj¹cy stronê logiczn¹ gry
+  gra		- funkcja obs³uguj¹ca pojedyncz¹ rozgrywkê z zadanymi parametrami na zadanym ekranie
+  ustal_graczy	- funkcja ustalaj¹ca, którzy gracze bior¹ udzia³ w rozgrywce
+  wyniki	- funkcja pokazuj¹ca wyniki graczów
+  wstep		- funkcja obslugujaca menu glowne
+grafika.h  - plik zawieraj¹cy funkcje graficzne gry. Ka¿dej funkcji logicznej odpowiada zwi¹zana z ni¹ funkcja graficzna
+
+Szczegó³y znajduj¹ siê w obszernych komentarzach w kodzie.
